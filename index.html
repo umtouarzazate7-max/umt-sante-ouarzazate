@@ -1,117 +1,256 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاتحاد المغربي للشغل - قطاع الصحة ورزازات</title> 
+    <title>متجري الإلكتروني - أزياء ومنتجات متنوعة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات عامة */
+        * {
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-bottom: 50px;
         }
-
-        /* رأس الصفحة (Header) */
+        /* الهيدر / ترويسة الموقع */
         header {
-            background-color: #0033a0; /* لون أزرق رسمي */
+            background: linear-gradient(135deg, #0f172a, #1e293b);
             color: white;
+            padding: 25px 15px;
             text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
         header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #f8fafc;
         }
-
-        header h2 {
-            margin: 10px 0 0;
-            font-weight: 300;
-            font-size: 1.2em;
-            color: #e0e0e0;
+        header p {
+            font-size: 0.95rem;
+            color: #94a3b8;
         }
-
-        /* المحتوى الرئيسي */
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* قسم الرسالة التحفيزية */
-        .message-section {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-top: 5px solid #0033a0;
-        }
-
-        .message-section h3 {
-            color: #0033a0;
-            margin-top: 0;
-            font-size: 1.5em;
-        }
-
-        .message-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .message-section li {
-            margin-bottom: 15px;
-            padding-right: 25px;
-            position: relative;
-        }
-
-        .message-section li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: #0033a0;
-            font-weight: bold;
-        }
-
-        /* قسم دعوة الانخراط (Call to Action) */
-        .cta-section {
-            text-align: center;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .cta-section h3 {
-            color: #d32f2f; /* لون أحمر لجذب الانتباه */
-            margin-top: 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #0033a0;
+        /* شريط الإعلانات العلوية */
+        .hero-banner {
+            background-color: #2563eb;
             color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #002277;
-        }
-
-        /* تذييل الصفحة (Footer) */
-        footer {
             text-align: center;
-            padding: 20px;
-index.html
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+        /* أزرار تصفية الفئات */
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        .filter-btn {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        /* شبكة عرض المنتجات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: #e2e8f0;
+        }
+        .product-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .product-tag {
+            font-size: 0.75rem;
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .product-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .product-price {
+            font-size: 1.25rem;
+            color: #059669;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .btn-whatsapp {
+            margin-top: auto;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1eb954;
+        }
+        /* تذييل الصفحة */
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛍️ متجري المتنوع</h1>
+        <p>أفضل الملابس والمنتجات بأفضل الأسعار والتوصيل لجميع المدن</p>
+    </header>
+
+    <div class="hero-banner">
+        🚚 التوصيل سريع والسداد عند الاستلام (Cash on Delivery)
+    </div>
+
+    <div class="container">
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
+            <button class="filter-btn" onclick="filterProducts('clothes-men')">ملابس رجالية</button>
+            <button class="filter-btn" onclick="filterProducts('clothes-women')">ملابس نسائية</button>
+            <button class="filter-btn" onclick="filterProducts('shoes')">أحذية</button>
+            <button class="filter-btn" onclick="filterProducts('accessories')">إكسسوارات وأخرى</button>
+        </div>
+
+        <div class="products-grid">
+
+            <div class="product-card" data-category="clothes-men">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="قميص رجالي" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">ملابس رجالية</span>
+                    <h3 class="product-title">قميص قطني عصري</h3>
+                    <div class="product-price">180 درهم</div>
+                    <a href="https://wa.me/212702159063?text=مرحباً،%20أريد%20طلب:%20قميص%20قطني%20عصري%20(180%20درهم)" target="_blank" class="btn-whatsapp">
+                        💬 طلب عبر الواتساب
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="clothes-women">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="فستان أزياء" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">ملابس نسائية</span>
+                    <h3 class="product-title">فستان أنيق مناسبات</h3>
+                    <div class="product-price">290 درهم</div>
+                    <a href="https://wa.me/212702159063?text=مرحباً،%20أريد%20طلب:%20فستان%20أنيق%20مناسبات%20(290%20درهم)" target="_blank" class="btn-whatsapp">
+                        💬 طلب عبر الواتساب
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="shoes">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="حذاء رياضي" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">أحذية</span>
+                    <h3 class="product-title">حذاء رياضي مريح</h3>
+                    <div class="product-price">250 درهم</div>
+                    <a href="https://wa.me/212702159063?text=مرحباً،%20أريد%20طلب:%20حذاء%20رياضي%20مريح%20(250%20درهم)" target="_blank" class="btn-whatsapp">
+                        💬 طلب عبر الواتساب
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessories">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="ساعة يد" class="product-img">
+                <div class="product-info">
+                    <span class="product-tag">إكسسوارات</span>
+                    <h3 class="product-title">ساعة يد كلاسيكية</h3>
+                    <div class="product-price">150 درهم</div>
+                    <a href="https://wa.me/212702159063?text=مرحباً،%20أريد%20طلب:%20ساعة%20يد%20كلاسيكية%20(150%20درهم)" target="_blank" class="btn-whatsapp">
+                        💬 طلب عبر الواتساب
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لـ متجري الإلكتروني</p>
+        <p style="margin-top: 8px; color: #94a3b8;">للتواصل المباشر: 212702159063+</p>
+    </footer>
+
+    <script>
+        function filterProducts(category) {
+            // تحديث الشكل النشط للأزرار
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // إظهار وإخفاء المنتجات
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
 
