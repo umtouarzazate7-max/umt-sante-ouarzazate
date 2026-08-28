@@ -28,6 +28,26 @@
             color: var(--text-main);
             line-height: 1.7;
             padding-bottom: 20px;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* العلامة المائية الشفافة في خلفية الموقع */
+        .bg-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 900;
+            color: rgba(0, 51, 160, 0.04);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+            text-align: center;
+            width: 100%;
         }
 
         header {
@@ -37,15 +57,29 @@
             padding: 40px 20px 45px;
             box-shadow: 0 10px 25px -5px rgba(0, 51, 160, 0.25);
             position: relative;
+            z-index: 1;
         }
 
-        /* تنسيق شعار النقابة */
+        /* شارة الذكرى 71 في الترويسة */
+        .years-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffd700;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            backdrop-filter: blur(5px);
+        }
+
         .header-logo {
             width: 90px;
             height: 90px;
             object-fit: contain;
             background: white;
-            padding: 5px;
+            padding: 6px;
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             margin-bottom: 12px;
@@ -77,6 +111,7 @@
             border-radius: 16px;
             padding: 35px 30px;
             box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .message-section {
@@ -170,6 +205,8 @@
             color: #94a3b8;
             margin-top: 50px;
             font-size: 0.95em;
+            position: relative;
+            z-index: 1;
         }
 
         footer p { margin: 5px 0; }
@@ -184,12 +221,15 @@
 </head>
 <body>
 
+    <!-- النص المائي الاحترافي في خلفية الصفحة -->
+    <div class="bg-watermark">
+        71 سنة من النضال المستمر
+    </div>
+
     <header>
-        <!-- شعار الاتحاد المغربي للشغل مع خاصية الحماية إذا لم تظهر الصورة -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Union_marocaine_du_travail.svg/500px-Union_marocaine_du_travail.svg.png" 
-             alt="شعار الاتحاد المغربي للشغل" 
-             class="header-logo" 
-             onerror="this.style.display='none'">
+        <div class="years-badge">✊ 71 سنة من النضال المستمر</div>
+        <br>
+        <img src="logo.png" alt="شعار الاتحاد المغربي للشغل" class="header-logo">
         
         <h1>الإتحاد المغربي للشغل</h1>
         <h2>الجامعة الوطنية للصحة - المكتب الإقليمي بورزازات</h2>
