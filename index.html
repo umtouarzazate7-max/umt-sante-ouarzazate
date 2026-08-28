@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الاتحاد المغربي للشغل - قطاع الصحة ورزازات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- استدعاء خط Cairo للطباعة والخطوط الحديثة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0033a0;
-            --primary-dark: #002277;
-            --accent-color: #d32f2f;
-            --bg-color: #f8fafc;
+            --primary-navy: #0f172a;
+            --primary-blue: #1e40af;
+            --accent-blue: #3b82f6;
+            --accent-gold: #f59e0b;
+            --accent-red: #dc2626;
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            padding-bottom: 20px;
-            position: relative;
+            color: var(--text-dark);
+            line-height: 1.8;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
             overflow-x: hidden;
         }
 
-        /* العلامة المائية الشفافة في خلفية الموقع */
-        .bg-watermark {
+        /* العلامة المائية الشفافة في الخلفية */
+        .watermark-bg {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            font-size: clamp(3rem, 7vw, 6rem);
+            transform: translate(-50%, -50%) rotate(-12deg);
+            font-size: clamp(2.5rem, 6.5vw, 5.5rem);
             font-weight: 900;
-            color: rgba(0, 51, 160, 0.04);
+            color: rgba(15, 23, 42, 0.035);
             white-space: nowrap;
             pointer-events: none;
             z-index: 0;
@@ -50,206 +54,287 @@
             width: 100%;
         }
 
+        /* ترويسة الصفحة المبتكرة */
         header {
-            background: linear-gradient(135deg, #001f66 0%, #0033a0 100%);
-            color: white;
+            background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+            color: #ffffff;
+            padding: 50px 20px 60px;
             text-align: center;
-            padding: 40px 20px 45px;
-            box-shadow: 0 10px 25px -5px rgba(0, 51, 160, 0.25);
             position: relative;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+            border-bottom: 4px solid var(--accent-gold);
             z-index: 1;
         }
 
-        /* شارة الذكرى 71 في الترويسة */
-        .years-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #ffd700;
-            padding: 6px 18px;
-            border-radius: 20px;
+        .badge-71 {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--accent-gold);
+            padding: 6px 20px;
+            border-radius: 50px;
             font-size: 0.95em;
             font-weight: 700;
-            margin-bottom: 15px;
-            backdrop-filter: blur(5px);
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            font-size: 2.3em;
+            font-size: clamp(2em, 5vw, 2.8em);
             font-weight: 900;
+            letter-spacing: -0.5px;
             margin-bottom: 8px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         header h2 {
-            font-weight: 500;
-            font-size: 1.2em;
-            color: #e2e8f0;
+            font-size: clamp(1.05em, 2.5vw, 1.35em);
+            font-weight: 600;
+            color: #93c5fd;
+            opacity: 0.95;
         }
 
-        .container {
-            max-width: 760px;
-            margin: -20px auto 40px;
+        /* الحاوية الرئيسية */
+        .main-container {
+            max-width: 800px;
+            width: 100%;
+            margin: -30px auto 50px;
             padding: 0 20px;
             position: relative;
             z-index: 10;
+            flex: 1;
         }
 
+        /* بطاقات العرض العصري */
         .card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 35px 30px;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-
-        .message-section {
+            border-radius: 20px;
+            padding: 40px 35px;
             margin-bottom: 25px;
-            border-top: 5px solid var(--primary-color);
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .message-section h3 {
-            color: var(--primary-color);
-            font-size: 1.5em;
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
+        }
+
+        /* خط علوي جمالي للبطاقة */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+        }
+
+        .card.cta-card::before {
+            background: linear-gradient(90deg, var(--accent-red), #f43f5e);
+        }
+
+        .card h3 {
+            font-size: 1.6em;
             font-weight: 800;
-            margin-bottom: 12px;
+            color: var(--primary-navy);
+            margin-bottom: 14px;
         }
 
-        .message-section p {
+        .card.cta-card h3 {
+            color: var(--accent-red);
+            text-align: center;
+        }
+
+        .card p {
             color: var(--text-muted);
             font-size: 1.05em;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
-        .message-section ul {
-            list-style-type: none;
+        .cta-card p {
+            text-align: center;
+        }
+
+        /* قائمة المميزات بحلّة جديدة */
+        .features-list {
+            list-style: none;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .message-section li {
-            margin-bottom: 16px;
-            padding-right: 36px;
-            position: relative;
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
             font-size: 1.02em;
         }
 
-        .message-section li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            top: 2px;
-            width: 24px;
-            height: 24px;
-            background-color: rgba(0, 51, 160, 0.1);
-            color: var(--primary-color);
+        .feature-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(30, 64, 175, 0.1);
+            color: var(--primary-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85em;
             font-weight: 900;
+            font-size: 0.9em;
+            margin-top: 2px;
         }
 
-        .cta-section {
+        .features-list strong {
+            color: var(--primary-navy);
+        }
+
+        /* زر الانخراط الجديد مع تأثير الحركة */
+        .btn-wrapper {
             text-align: center;
-            border-top: 5px solid var(--accent-color);
+            margin-top: 25px;
         }
 
-        .cta-section h3 {
-            color: var(--accent-color);
-            font-size: 1.6em;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .cta-section p {
-            color: var(--text-muted);
-            font-size: 1.05em;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white !important;
-            padding: 16px 36px;
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
+            color: #ffffff !important;
+            padding: 18px 42px;
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.2em;
-            font-weight: 700;
-            margin-top: 25px;
-            box-shadow: 0 8px 20px -4px rgba(0, 51, 160, 0.4);
-            transition: all 0.3s ease;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.45);
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
         }
 
         .sub-note {
-            margin-top: 15px !important;
+            margin-top: 16px !important;
             font-size: 0.88em !important;
             color: var(--text-muted) !important;
+            text-align: center;
         }
 
+        /* تذييل الصفحة الأنيق */
         footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #0f172a;
+            background-color: var(--primary-navy);
             color: #94a3b8;
-            margin-top: 50px;
+            padding: 35px 20px;
+            text-align: center;
             font-size: 0.95em;
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
             position: relative;
             z-index: 1;
         }
 
-        footer p { margin: 5px 0; }
+        footer p {
+            margin: 6px 0;
+        }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8em; }
-            header h2 { font-size: 1.05em; }
-            .card { padding: 25px 20px; }
-            .btn { width: 100%; padding: 16px 15px; font-size: 1.1em; }
+        .footer-highlight {
+            color: #f1f5f9;
+            font-weight: 700;
+        }
+
+        /* التجاوب مع مختلف الشاشات والهواتف */
+        @media (max-width: 640px) {
+            header { padding: 40px 15px 50px; }
+            .card { padding: 28px 20px; border-radius: 16px; }
+            .btn-cta { width: 100%; padding: 16px 20px; font-size: 1.1em; }
+            .features-list li { padding: 12px 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- النص المائي الشفاف في خلفية الصفحة -->
-    <div class="bg-watermark">
+    <!-- العلامة المائية الشفافة خلف المحتوى -->
+    <div class="watermark-bg">
         71 سنة من النضال المستمر
     </div>
 
     <header>
-        <div class="years-badge">✊ 71 سنة من النضال المستمر</div>
+        <div class="badge-71">
+            <span>✊</span>
+            <span>71 سنة من النضال المستمر</span>
+        </div>
         
         <h1>الإتحاد المغربي للشغل</h1>
         <h2>الجامعة الوطنية للصحة - المكتب الإقليمي بورزازات</h2>
     </header>
 
-    <div class="container">
+    <main class="main-container">
         
-        <div class="card message-section">
+        <!-- البطاقة الأولى: الترحيب والأسباب -->
+        <section class="card">
             <h3>لماذا تنضم إلينا؟</h3>
             <p>انضمامك لأعرق مركزية نقابية في المغرب هو استثمار في أمانك المهني ومستقبلك. نحن هنا للدفاع عن حقوقك المشروعة.</p>
-            <ul>
-                <li><strong>الامتداد التاريخي:</strong> حصانة وانتماء لمنظمة تمتلك خبرة عقود في الدفاع عن الطبقة الشغيلة.</li>
-                <li><strong>الحماية القانونية:</strong> مظلة آمنة تشمل الاستشارات القانونية والمؤازرة الميدانية المستمرة.</li>
-                <li><strong>انتزاع المكتسبات:</strong> العمل النقابي الجماعي هو السبيل الوحيد لتحسين ظروف العمل وضمان ترقية عادلة.</li>
-            </ul>
-        </div>
 
-        <div class="card cta-section">
+            <ul class="features-list">
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <div>
+                        <strong>الامتداد التاريخي:</strong> حصانة وانتماء لمنظمة تمتلك خبرة عقود في الدفاع عن الطبقة الشغيلة.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <div>
+                        <strong>الحماية القانونية:</strong> مظلة آمنة تشمل الاستشارات القانونية والمؤازرة الميدانية المستمرة.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <div>
+                        <strong>انتزاع المكتسبات:</strong> العمل النقابي الجماعي هو السبيل الوحيد لتحسين ظروف العمل وضمان ترقية عادلة.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- البطاقة الثانية: دعوة للانخراط -->
+        <section class="card cta-card">
             <h3>صوتنا يشتد بتعددنا.. انخرط الآن!</h3>
             <p>لقد سهلنا عليك عملية الانخراط. يمكنك الآن التسجيل إلكترونياً في دقائق معدودة عبر استمارتنا الرقمية الآمنة.</p>
             
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj_laF774Qsw4VMlCagDdSYk0TebUILEbHswhr5w2C_AORTA/viewform" target="_blank" class="btn">
-                اضغط هنا لملء استمارة الانخراط
-            </a>
+            <div class="btn-wrapper">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj_laF774Qsw4VMlCagDdSYk0TebUILEbHswhr5w2C_AORTA/viewform" target="_blank" class="btn-cta">
+                    <span>اضغط هنا لملء استمارة الانخراط</span>
+                </a>
+            </div>
             
             <p class="sub-note">
                 (سيتم توجيهك إلى نموذج Google آمن)
             </p>
-        </div>
+        </section>
 
-    </div>
+    </main>
 
     <footer>
-        <p>U.M.T Ouarzazate &copy; 2026 - يداً في يد لتحقيق العدالة الاجتماعية.</p>
+        <p class="footer-highlight">U.M.T Ouarzazate &copy; 2026 - يداً في يد لتحقيق العدالة الاجتماعية.</p>
         <p>للتواصل: umtouarzazate7@gmail.com | هاتف: 212702159063+</p>
     </footer>
 
