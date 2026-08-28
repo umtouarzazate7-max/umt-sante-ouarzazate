@@ -1,13 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الاتحاد المغربي للشغل - قطاع الصحة ورزازات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* إعدادات عامة */
+        * {
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f7f6;
@@ -15,57 +20,86 @@
             line-height: 1.6;
         }
 
-        /* رأس الصفحة (Header) */
+        /* رأس الصفحة */
         header {
-            background-color: #0033a0; /* لون أزرق رسمي */
+            background: linear-gradient(135deg, #0033a0, #001f66);
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 45px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.2em;
+            font-weight: 900;
         }
 
         header h2 {
             margin: 10px 0 0;
-            font-weight: 300;
-            font-size: 1.2em;
+            font-weight: 400;
+            font-size: 1.1em;
             color: #e0e0e0;
         }
 
-        /* المحتوى الرئيسي */
         .container {
             max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
 
-        /* قسم الرسالة التحفيزية */
+        /* شريط الأرقام والإنجازات */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-bottom: 4px solid #0033a0;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: #0033a0;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: bold;
+        }
+
+        /* قسم الرسالة */
         .message-section {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            border-top: 5px solid #0033a0;
+            border-right: 5px solid #0033a0;
         }
 
         .message-section h3 {
             color: #0033a0;
             margin-top: 0;
-            font-size: 1.5em;
+            font-size: 1.4em;
         }
 
         .message-section ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
 
         .message-section li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             padding-right: 25px;
             position: relative;
         }
@@ -78,51 +112,118 @@
             font-weight: bold;
         }
 
-        /* قسم دعوة الانخراط (Call to Action) */
+        /* قسم الأسئلة الشائعة التفاعلي */
+        .faq-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .faq-section h3 {
+            color: #0033a0;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: right;
+            font-size: 1em;
+            font-weight: bold;
+            padding: 12px 0;
+            cursor: pointer;
+            color: #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-bottom: 15px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        /* قسم الدعوة للانخراط */
         .cta-section {
             text-align: center;
             background: white;
-            padding: 40px 30px;
-            border-radius: 10px;
+            padding: 35px 20px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .cta-section h3 {
-            color: #d32f2f; /* لون أحمر لجذب الانتباه */
+            color: #d32f2f;
             margin-top: 0;
+            font-size: 1.5em;
         }
 
-        .btn {
+        /* زر متوهج وينبض بالحركة */
+        .btn-pulse {
             display: inline-block;
             background-color: #0033a0;
             color: white;
-            padding: 15px 30px;
+            padding: 16px 35px;
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.2em;
             font-weight: bold;
-            margin-top: 20px;
-            transition: background-color 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 51, 160, 0.4);
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
         }
 
-        .btn:hover {
-            background-color: #002277;
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 51, 160, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(0, 51, 160, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 51, 160, 0); }
         }
 
-        /* تذييل الصفحة (Footer) */
+        /* زر الواتساب العائم */
+        .float-whatsapp {
+            position: fixed;
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
+            padding: 25px 15px;
+            background-color: #1e293b;
             color: white;
             margin-top: 40px;
             font-size: 0.9em;
         }
 
-        /* توافق مع شاشات الهواتف */
         @media (max-width: 600px) {
-            header h1 { font-size: 2em; }
-            .btn { width: 80%; }
+            .stats-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8em; }
         }
     </style>
 </head>
@@ -134,37 +235,30 @@
     </header>
 
     <div class="container">
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">+500</div>
+                <div class="stat-label">منخرط بالإقليم</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">مؤازرة وحماية قانونية</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">تواصل واستماع مستمر</div>
+            </div>
+        </div>
         
         <div class="message-section">
-            <h3>لماذا تنضم إلينا؟</h3>
-            <p>انضمامك لأعرق مركزية نقابية في المغرب هو استثمار في أمانك المهني ومستقبلك. نحن هنا للدفاع عن حقوقك المشروعة.</p>
+            <h3>لماذا تنضم إلينا اليوم؟</h3>
+            <p>انضمامك لأعرق مركزية نقابية في المغرب هو استثمار حقيقي في أمانك المهني ومستقبلك.</p>
             <ul>
-                <li><strong>الامتداد التاريخي:</strong> حصانة وانتماء لمنظمة تمتلك خبرة عقود في الدفاع عن الطبقة الشغيلة.</li>
-                <li><strong>الحماية القانونية:</strong> مظلة آمنة تشمل الاستشارات القانونية والمؤازرة الميدانية المستمرة.</li>
-                <li><strong>انتزاع المكتسبات:</strong> العمل النقابي الجماعي هو السبيل الوحيد لتحسين ظروف العمل وضمان ترقية عادلة.</li>
+                <li><strong>الامتداد التاريخي:</strong> حصانة وانتماء لمنظمة تمتلك خبرة عقود في الدفاع عن شغيلة الصحة.</li>
+                <li><strong>الحماية والمؤازرة:</strong> مظلة قانونية وإدارية آمنة في جميع المواقف والملفات.</li>
+                <li><strong>انتزاع المكتسبات:</strong> صوتنا الجماعي هو السلاح الوحيد لتحسين ظروف العمل والترقية.</li>
             </ul>
         </div>
 
-        <div class="cta-section">
-            <h3>صوتنا يشتد بتعددنا.. انخرط الآن!</h3>
-            <p>لقد سهلنا عليك عملية الانخراط. يمكنك الآن التسجيل إلكترونياً في دقائق معدودة عبر استمارتنا الرقمية الآمنة.</p>
-            
-            <!-- زر التوجيه للاستمارة -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj_laF774Qsw4VMlCagDdSYk0TebUILEbHswhr5w2C_AORTA/viewform" target="_blank" class="btn">
-                اضغط هنا لملء استمارة الانخراط
-            </a>
-            
-            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                (سيتم توجيهك إلى نموذج Google آمن)
-            </p>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>U.M.T Ouarzazate &copy; 2026 - يداً في يد لتحقيق العدالة الاجتماعية.</p>
-        <p>للتواصل: umtouarzazate7@gmail.com | هاتف: 212702159063+</p>
-    </footer>
-
-</body>
-</html>
+        <div class="faq-section">
