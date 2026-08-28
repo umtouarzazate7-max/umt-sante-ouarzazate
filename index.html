@@ -13,6 +13,7 @@
             --accent-blue: #3b82f6;
             --accent-gold: #f59e0b;
             --accent-red: #dc2626;
+            --accent-green: #10b981;
             --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --text-dark: #0f172a;
@@ -54,7 +55,7 @@
             width: 100%;
         }
 
-        /* ترويسة الصفحة المبتكرة */
+        /* ترويسة الصفحة */
         header {
             background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
             color: #ffffff;
@@ -108,7 +109,7 @@
             flex: 1;
         }
 
-        /* بطاقات العرض العصري */
+        /* بطاقات العرض */
         .card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -126,7 +127,6 @@
             box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
         }
 
-        /* خط علوي جمالي للبطاقة */
         .card::before {
             content: '';
             position: absolute;
@@ -135,6 +135,10 @@
             left: 0;
             height: 5px;
             background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+        }
+
+        .card.convention-card::before {
+            background: linear-gradient(90deg, var(--accent-green), #059669);
         }
 
         .card.cta-card::before {
@@ -146,6 +150,10 @@
             font-weight: 800;
             color: var(--primary-navy);
             margin-bottom: 14px;
+        }
+
+        .card.convention-card h3 {
+            color: #065f46;
         }
 
         .card.cta-card h3 {
@@ -163,7 +171,50 @@
             text-align: center;
         }
 
-        /* قائمة المميزات بحلّة جديدة */
+        /* تنسيق قسم الشراكة الجديد */
+        .convention-badge {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            font-size: 0.85em;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .convention-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin: 15px 0 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .partner-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .highlight-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid var(--accent-green);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.98em;
+        }
+
+        .highlight-item strong {
+            color: var(--primary-navy);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* قائمة المميزات العامة */
         .features-list {
             list-style: none;
             padding: 0;
@@ -202,7 +253,7 @@
             color: var(--primary-navy);
         }
 
-        /* زر الانخراط الجديد مع تأثير الحركة */
+        /* زر الانخراط */
         .btn-wrapper {
             text-align: center;
             margin-top: 25px;
@@ -238,7 +289,7 @@
             text-align: center;
         }
 
-        /* تذييل الصفحة الأنيق */
+        /* تذييل الصفحة */
         footer {
             background-color: var(--primary-navy);
             color: #94a3b8;
@@ -260,12 +311,13 @@
             font-weight: 700;
         }
 
-        /* التجاوب مع مختلف الشاشات والهواتف */
+        /* التوافق مع الهواتف */
         @media (max-width: 640px) {
             header { padding: 40px 15px 50px; }
             .card { padding: 28px 20px; border-radius: 16px; }
             .btn-cta { width: 100%; padding: 16px 20px; font-size: 1.1em; }
             .features-list li { padding: 12px 15px; }
+            .partner-highlights { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -287,6 +339,41 @@
     </header>
 
     <main class="main-container">
+
+        <!-- البطاقة الخاصة باتفاقية بصريات النخيل -->
+        <section class="card convention-card">
+            <span class="convention-badge">شراكة جديدة 🤝</span>
+            <h3>اتفاقية تعاون مع مؤسسة "بصريات النخيل" (Nakhil Optique)</h3>
+            <p>
+                في إطار تجويد الخدمات الاجتماعية، يسعد الجامعة الوطنية للصحة بورزازات إبرام اتفاقية شراكة لتخفيف الأعباء المادية عن المنخرطين وعائلاتهم (الأزواج، الأبناء، والآباء).
+            </p>
+
+            <!-- صورة وثيقة الاتفاقية المرفقة -->
+            <img src="convention-nakhil.jpg" alt="وثيقة اتفاقية الشراكة مع بصريات النخيل" class="convention-img">
+
+            <div class="partner-highlights">
+                <div class="highlight-item">
+                    <strong>👓 تخفيض حصري 25%</strong>
+                    على النظارات الطبية، الشمسية، والعدسات اللاصقة.
+                </div>
+                <div class="highlight-item">
+                    <strong>👁️ فحص مجاني</strong>
+                    فحص مجاني للنظر وترويض تقويم البصر للمنخرط وأسرته.
+                </div>
+                <div class="highlight-item">
+                    <strong>🛡️ ضمان مجاني شامل</strong>
+                    سنة كاملة للعدسات و 6 أشهر للإطارات ضد عيوب التصنيع.
+                </div>
+                <div class="highlight-item">
+                    <strong>💳 تسهيلات مرنة للأداء</strong>
+                    تقسيط على 3 أو 4 دفعات أو ربط الأداء باسترجاع مصاريف التغطية الصحية.
+                </div>
+            </div>
+            
+            <p class="sub-note" style="text-align: right; margin-top: 20px !important;">
+                📌 <strong>شرط الاستفادة:</strong> الإدلاء ببطاقة الانخراط الخاصة بالاتحاد المغربي للشغل (UMT).
+            </p>
+        </section>
         
         <!-- البطاقة الأولى: الترحيب والأسباب -->
         <section class="card">
