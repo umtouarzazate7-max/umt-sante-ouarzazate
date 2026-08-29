@@ -543,7 +543,79 @@
             ...
         </a>
 
-</body>
+</body><!-- ========================================== -->
+<!--  كود الوضع الداكن الشامل (Dark Mode)     -->
+<!-- ========================================== -->
+<button id="theme-toggle" class="dark-mode-float-btn" title="تبديل الوضع الليلي/النهاري">🌙</button>
+
+<style>
+/* زر التبديل العائم أعلى الصفحة */
+.dark-mode-float-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 99999;
+    background: #0d233a;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-float-btn:hover {
+    transform: scale(1.1);
+}
+
+/* الألوان عند تفعيل الوضع الداكن */
+body.dark-mode {
+    background-color: #121820 !important;
+    color: #e0e6ed !important;
+}
+
+body.dark-mode section, 
+body.dark-mode footer, 
+body.dark-mode header,
+body.dark-mode div,
+body.dark-mode .map-section {
+    background-color: #1a232e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode p,
+body.dark-mode span {
+    color: #ffffff !important;
+}
+</style>
+
+<script>
+const toggleBtn = document.getElementById('theme-toggle');
+
+// استرجاع التفضيل المحفوظ
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleBtn.textContent = '☀️';
+}
+
+// التبديل عند الضغط
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+</script>
+
 </html>
 </body><!-- زر التواصل المباشر عبر واتساب - المكتب الإقليمي للاتحاد المغربي للشغل -->
 <a href="https://wa.me/212702159063" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" title="التواصل المباشر مع المكتب الإقليمي للاتحاد المغربي للشغل">
