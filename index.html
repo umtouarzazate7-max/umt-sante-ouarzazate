@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الاتحاد المغربي للشغل - قطاع الصحة ورزازات</title>
+    <!-- استدعاء سريع مسبق للصور الخارجيّة لتسريع الاستجابة -->
+    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="dns-prefetch" href="https://i.postimg.cc">
+    
     <!-- استدعاء خط Cairo للطباعة والخطوط الحديثة -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-navy: #0f172a;
@@ -99,7 +104,7 @@
             }
         }
 
-        /* تنسيق صورة الشعار العلوية */
+        /* تنسيق صورة الشعار العلوية - مضافة لتحميل أسرع */
         .header-logo {
             width: 90px;
             height: 90px;
@@ -108,6 +113,8 @@
             border: 3px solid var(--accent-gold);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
             transition: transform 0.3s ease;
+            background-color: var(--primary-navy); /* خلفية مؤقتة لحجز المكان فوراً */
+            flex-shrink: 0;
         }
 
         .header-logo:hover {
@@ -225,13 +232,18 @@
             margin-bottom: 10px;
         }
 
+        /* تحسين استجابة صورة الاتفاقية لحجز مكانها تلقائياً */
         .convention-img {
             width: 100%;
             height: auto;
+            min-height: 250px;
+            object-fit: contain;
+            background-color: #f8fafc;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
             margin: 15px 0 25px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            display: block;
         }
 
         .partner-highlights {
@@ -449,8 +461,14 @@
         </div>
         
         <div class="header-brand">
-            <!-- صورة الشعار العلوية -->
-            <img src="https://i.postimg.cc/tgkjTVPw/Screenshot-20260829-042143-Gallery.jpg" alt="شعار الاتحاد المغربي للشغل" class="header-logo">
+            <!-- صورة الشعار العلوية - إضافة أسبقية التحميل والأبعاد لتسريع الظهور -->
+            <img src="https://i.postimg.cc/tgkjTVPw/Screenshot-20260829-042143-Gallery.jpg" 
+                 alt="شعار الاتحاد المغربي للشغل" 
+                 class="header-logo"
+                 width="90" 
+                 height="90"
+                 fetchpriority="high"
+                 decoding="async">
             
             <div class="header-titles">
                 <h1>الإتحاد المغربي للشغل</h1>
@@ -512,8 +530,12 @@
                 في إطار تجويد الخدمات الاجتماعية، يسعد الجامعة الوطنية للصحة بورزازات إبرام اتفاقية شراكة لتخفيف الأعباء المادية عن المنخرطين وعائلاتهم (الأزواج، الأبناء، والآباء).
             </p>
 
-            <!-- صورة وثيقة الاتفاقية المرفقة -->
-            <img src="https://i.postimg.cc/RC35VvfD/IMG-20260430-WA0064(3).jpg" alt="وثيقة اتفاقية الشراكة مع بصريات النخيل" class="convention-img">
+            <!-- صورة وثيقة الاتفاقية - تحسين التحميل الذكي -->
+            <img src="https://i.postimg.cc/RC35VvfD/IMG-20260430-WA0064(3).jpg" 
+                 alt="وثيقة اتفاقية الشراكة مع بصريات النخيل" 
+                 class="convention-img"
+                 loading="lazy"
+                 decoding="async">
 
             <div class="partner-highlights">
                 <div class="highlight-item">
