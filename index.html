@@ -59,7 +59,7 @@
         header {
             background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
             color: #ffffff;
-            padding: 50px 20px 60px;
+            padding: 45px 20px 55px;
             text-align: center;
             position: relative;
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
@@ -83,16 +83,58 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* حاوية الشعار والعناوين */
+        .header-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        @media (min-width: 680px) {
+            .header-brand {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+
+        /* تنسيق صورة الشعار العلوية */
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-titles {
+            text-align: center;
+        }
+
+        @media (min-width: 680px) {
+            .header-titles {
+                text-align: right;
+            }
+        }
+
         header h1 {
-            font-size: clamp(2em, 5vw, 2.8em);
+            font-size: clamp(1.8em, 4.5vw, 2.5em);
             font-weight: 900;
             letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
         }
 
         header h2 {
-            font-size: clamp(1.05em, 2.5vw, 1.35em);
+            font-size: clamp(1em, 2.2vw, 1.25em);
             font-weight: 600;
             color: #93c5fd;
             opacity: 0.95;
@@ -171,7 +213,7 @@
             text-align: center;
         }
 
-        /* تنسيق قسم الشراكة الجديد */
+        /* تنسيق قسم الشراكة */
         .convention-badge {
             display: inline-block;
             background: #d1fae5;
@@ -334,8 +376,15 @@
             <span>71 سنة من النضال المستمر</span>
         </div>
         
-        <h1>الإتحاد المغربي للشغل</h1>
-        <h2>الجامعة الوطنية للصحة - المكتب الإقليمي بورزازات</h2>
+        <div class="header-brand">
+            <!-- صورة الشعار العلوية -->
+            <img src="https://i.postimg.cc/tgkjTVPw/Screenshot-20260829-042143-Gallery.jpg" alt="شعار الاتحاد المغربي للشغل" class="header-logo">
+            
+            <div class="header-titles">
+                <h1>الإتحاد المغربي للشغل</h1>
+                <h2>الجامعة الوطنية للصحة - المكتب الإقليمي بورزازات</h2>
+            </div>
+        </div>
     </header>
 
     <main class="main-container">
